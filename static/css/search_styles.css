@@ -1,0 +1,85 @@
+/* /static/search_styles.css */
+
+/* Styling for pokedex container */
+#pokedex {
+    width: 80%;
+    margin-left: 20%;
+    z-index: 9999;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+/* Styling for table */
+table { 
+    width: 100%;
+    margin-left: 0px
+}
+
+/* Styling for table column */
+td {
+    background-color: white;
+    border-radius: 10px; 
+    width: 20%;
+    border: 1px solid;
+}
+
+
+
+/* Styling for search container */
+#left_container {
+    width: 20%;
+    margin-left: 0%;
+    margin-top: 10%;
+    position: fixed;
+    z-index: 9999;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+/* Styling for form container */
+form {
+    text-align: center;
+}
+
+/* Styling for route search button */
+#search_route {
+    position: relative;
+    top: 0px;
+    margin: 0px;
+}
+
+/* Styling for dropdown */
+select {
+    text-align: center;
+    width: 95%;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Styling for options in dropdown */
+option {
+    font-size: 10px;
+    color: black;
+    width: 20px;
+    height: 20px;
+    border: 1px solid;
+    border-radius: 5px; 
+    margin: 0;
+    padding: 0;
+}
+
+/* Styling for submission buttons */
+input[type="submit" i] {
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    width: 95%;
+    height: 30px;
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    background-image: radial-gradient(circle,#00b4db, #0083b0);
+    margin-top: 10px;
+}

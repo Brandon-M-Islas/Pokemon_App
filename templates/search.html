@@ -1,0 +1,77 @@
+<!-- /templates/index.html -->
+<!--jinja2 delimiters -->
+
+<!DOCTYPE html>
+<html>
+    <!--
+            <head>
+        <link rel="stylesheet" href="/static/style.css">
+        <script src="/static/index.js"></script>
+    </head>
+    -->
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://www.serebii.net; script-src 'self'; style-src 'self'">
+        <title>Pokedex App</title>
+        <link rel="stylesheet" href="/static/css/search_styles.css">
+    </head>
+    <body>
+
+        <div id = "left_container">
+
+            <!-- Search bars -->
+            <div id = "search"> 
+                <form action = "/search" method = "POST">
+                    <select name = "search_name">
+                        <option value = ""> 
+                            Any Name
+                        </option>
+                        {% for item in name_data %}
+                        <option value = "{{ item }}">
+                            {{ item }}
+                        </option>
+                        {% endfor %}
+                    </select>
+    
+                    <select name = "search_route">
+                        <option value = "">
+                            Any Route
+                        </option>
+                        {% for item in route_data %}
+                        <option value = "{{ item }}">
+                            {{ item }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <input type = "submit" value = "Search">
+                </form>
+            </div>
+
+            <!-- Pokedex search -->
+            <div id = "pokedex_button"> 
+                <form action = "/pokedex" method = "POST">
+                    <input type = "submit" value = "Pokedex">
+                </form>
+            </div>
+        </div>
+
+        <div id = "pokedex"> 
+            <table id = "dextable">
+                {% for event in all_data %}
+                    <tr>
+                        <td id = "{{ event[1] }}">
+                            {% for (item, header) in zip(event, columns) %}
+                                {% if header == 'Sprite' or header == 'Shiny' %}
+                                    <p><strong>{{ header }}</strong>: <img src="{{ item }}" alt="{{ header }}"></p>
+                                {% else %}
+                                    <p><strong>{{ header }}</strong>: {{ item }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </td> 
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        
+
+    </body>
+</html>

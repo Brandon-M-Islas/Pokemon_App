@@ -1,0 +1,59 @@
+<!-- /templates/index.html -->
+<!--jinja2 delimiters -->
+
+<!DOCTYPE html>
+<html>
+    <!--
+            <head>
+        <link rel="stylesheet" href="/static/style.css">
+        <script src="/static/index.js"></script>
+    </head>
+    -->
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://www.serebii.net; script-src 'self'; style-src 'self'">
+        <title>Pokedex App</title>
+        <link rel="stylesheet" href="/static/css/index_styles.css">
+    </head>
+    <body>
+
+        {% if flag == "empty" %}
+            <p>Uh oh! We didn't find any pokemon that met these criteria. Try relaxing the search conditions!</p>
+        {% endif %}
+        
+        <!-- Search bars -->
+        <div id = "search"> 
+            <form action = "/search" method = "POST">
+                <select name = "search_name">
+                    <option value = ""> 
+                        Any Name
+                    </option>
+                    {% for item in name_data %}
+                    <option value = "{{ item }}">
+                        {{ item }}
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <select name = "search_route">
+                    <option value = "">
+                        Any Route
+                    </option>
+                    {% for item in route_data %}
+                    <option value = "{{ item }}">
+                        {{ item }}
+                    </option>
+                    {% endfor %}
+                </select>
+            <br>
+                <input type = "submit" value = "Search" id = "search_name">
+            </form>
+        </div>  
+        
+        <!-- Pokedex search -->
+        <div id = "pokedex"> 
+            <form action = "/pokedex" method = "POST">
+                <input type = "submit" value = "Pokedex" id = "search_route">
+            </form>
+        </div>
+    </body>
+</html>

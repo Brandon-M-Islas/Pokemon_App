@@ -1,0 +1,70 @@
+<!-- /templates/index.html -->
+<!--jinja2 delimiters -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://www.serebii.net; script-src 'self'; style-src 'self'">
+        <title>Pokedex App</title>
+        <link rel="stylesheet" href="/static/css/pokedex_styles.css">
+        <script src="/static/js/jquery-3.6.1.min.js"></script>
+        <script src="/static/js/pokedex_script.js"></script>
+    </head>
+    <body>
+
+        <div id = "left_container">
+
+            <!-- Search bars -->
+            <div id = "search"> 
+                <form action = "/search" method = "POST">
+                    <select name = "search_name">
+                        <option value = ""> 
+                            Any Name
+                        </option>
+                        {% for item in name_data %}
+                        <option value = "{{ item }}">
+                            {{ item }}
+                        </option>
+                        {% endfor %}
+                    </select>
+    
+                    <select name = "search_route">
+                        <option value = "">
+                            Any Route
+                        </option>
+                        {% for item in route_data %}
+                        <option value = "{{ item }}">
+                            {{ item }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <input type = "submit" value = "Search">
+                </form>
+            </div>
+
+            <!-- Pokedex search -->
+            <div id = "pokedex_button"> 
+                <form action = "/pokedex" method = "POST">
+                    <input type = "submit" value = "Pokedex">
+                </form>
+            </div>
+        </div>
+        
+        <div id = "pokedex"> 
+            <table id = "dextable">
+                {% for i in range(1, 31) %}
+                <tr>
+                    {% for j in range(0, 5) %}
+                    {% set idx = 5 * (i-1) + j %}
+                    <td id = "{{ name_data[idx] }}">
+                        <p id = "{{ name_data[idx] }}_Name">{{ number_data[idx] }}. {{ name_data[idx] }}</p>
+                        <img src = "{{ sprite_data[idx] }}" alt = "{{ name_data[idx] }}_Sprite" id = "{{ name_data[idx] }}_Sprite">
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </body>
+</html>
