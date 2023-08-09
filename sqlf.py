@@ -11,18 +11,26 @@ import sqlite3  # To use Sqlite as datatable
 
 #_______________________________________________________________________________________________________#
 
+## Global Variables ##
+
+DB = "pokemon.db"
+
+#_______________________________________________________________________________________________________#
+
 ## Functions ##
 
 # Query the database and return all records
-def show_all(table):
+def show_all(table: str):
 
-    # Creates the database 'pokemon.db' if does not exist; connect thereafter
-    conn = sqlite3.connect('pokemon.db')
+    # Input: table = name of the table
+
+    # Creates the database if does not exist; connect thereafter
+    conn = sqlite3.connect(DB)
 
     # Create cursor
     c = conn.cursor()
 
-    # Executes a transaction that may change the database
+    # Query all items in given table
     c.execute("SELECT * FROM " + table)
     items = c.fetchall()
     for item in items:
@@ -35,17 +43,18 @@ def show_all(table):
     conn.close()
 
 # Add a single record to the database
-def add_one(table, value):
-    # Creates the database 'customer.db' since if does not exist; connect thereafter
-    conn = sqlite3.connect('pokemon.db')
+def add_one(table: str, value: tuple):
+
+    # Input: table = name of the table
+    #        value = tuple of every value for the record
+
+    # Creates the database if does not exist; connect thereafter
+    conn = sqlite3.connect(DB)
 
     # Create cursor
     c = conn.cursor()
 
-    # Create a Table; Executes a transaction that may change the database
-    # c.execute("""CREATE TABLE " + pokedata + " (name text)""")
-
-    # Add one record at a time; Executes a transaction that may change the database
+    # Add one record at a time
     c.execute("INSERT INTO " + table + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", value)
 
     # Commits any pending transactions to change the database 
@@ -55,14 +64,17 @@ def add_one(table, value):
     conn.close()
 
 # Deletes a table in the database
-def delete_table(table):
-    # Creates the database 'customer.db' since if does not exist; connect thereafter
-    conn = sqlite3.connect('pokemon.db')
+def delete_table(table: str):
+
+    # Input: table = name of the table
+
+    # Creates the database if does not exist; connect thereafter
+    conn = sqlite3.connect(DB)
 
     # Create cursor
     c = conn.cursor()
 
-    # Deelete table; Executes a transaction that may change the database
+    # Delete table
     c.execute("DROP TABLE " + table)
 
     # Commits any pending transactions to change the database 
@@ -72,15 +84,18 @@ def delete_table(table):
     conn.close()
 
 # Add many new records to the database
-def add_many(table, List):
+def add_many(table: str, List: list):
 
-    # Creates the database 'customer.db' since if does not exist; connect thereafter
-    conn = sqlite3.connect('pokemon.db')
+    # Input: table = name of the table
+    #         List = list of tuples with every value for each record
+
+    # Creates the database if does not exist; connect thereafter
+    conn = sqlite3.connect(DB)
 
     # Create cursor
     c = conn.cursor()
 
-    # Iterate through list to add each; Executes a transaction that may change the database
+    # Iterate through list to add each
     c.executemany("INSERT INTO " + table + " VALUES " + columns(len(List[0])), (List))
 
     # Commits any pending transactions to change the database 
@@ -90,14 +105,17 @@ def add_many(table, List):
     conn.close()
 
 # Add a table to the database
-def create_table(table):
-    # Creates the database 'pokemon.db' if does not exist; connect thereafter
-    conn = sqlite3.connect('pokemon.db')
+def create_table(table: str):
+
+    # Input: table = name of the table
+
+    # Creates the database if does not exist; connect thereafter
+    conn = sqlite3.connect(DB)
 
     # Create cursor
     c = conn.cursor()
 
-    # Create a Table; Executes a transaction that may change the database
+    # Create a Table
     c.execute("CREATE TABLE " + table + """ (
         Number text,
         Name text,
@@ -127,16 +145,23 @@ def create_table(table):
     # Close connection
     conn.close()
 
-# defines the number of columns for the table
-def columns(l):
+# defines the number of columns for the table; (?, ?, ..., ?)
+def columns(l: int):
 
+    # Input: l = length of the tuple
 
+    # Start the tuple
     text = "("
+
+    # Add ? for each item in the list
     for i in range(0,l):
         if i == 0:
             text = text + "?"
         else:
             text = text + ", ?"
 
-    text = text + ")" 
+    # Close the tuple
+    text = text + ")"
+
+    # Return the tuple 
     return text

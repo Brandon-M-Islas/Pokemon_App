@@ -1,7 +1,7 @@
 ## Description ##
 
 # Webscrape to gather information about the og 151 pokemon from various sources and save it into a database
-#   All references to data within the datatbale should be directed here
+# All references to data within the datatable should be directed here
 
 #_______________________________________________________________________________________________________#
 
