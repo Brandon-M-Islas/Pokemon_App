@@ -4,6 +4,7 @@
 # Folder Structure
 ## venv
     Venv is a virtual environment module that is used to handle dependencies. This way no matter what's on my computer, I can activate this virtual environment (venv) and have everything work as expected. I installed with this with python3 so after activating the venv you can use pip and python as a proxy for pip3 and python3. 
+    To select interpreter:               CMD + SHIFT + P -> Python: Select Interpreter -> venv option
     To create a venv:                    `python3 -m venv <folder_name> --prompt="<terminal_name>" --upgrade-deps`
     To activate a venv:                  `source <folder_name>/bin/activate`
     To install packages into venv:       `python -m pip install <package-name>`
@@ -37,3 +38,10 @@
 
 ### venv/pyvenv.cfg:
     pyvenv.cfg is a crucial file for your virtual environment. It contains only a couple of key-value pairs that Python uses to set variables in the sys module that determine which Python interpreter and which site-packages directory the current Python session will use. You’ll learn more about the settings in this file when you read about how a virtual environment works.
+
+## templates
+    This houses the front end html of the website/application
+
+## static
+    This houses the styling via css and connection to db via js
+
