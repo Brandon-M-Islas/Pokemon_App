@@ -12,9 +12,7 @@ import requests                         # To make api requests
 from bs4 import BeautifulSoup           # To pull data from websites
 import re                               # To use regular expressions
 import sqlite3                          # To connect to database and make 1-off changes
-import database.sqlf as sqlf                             # To create the database 
-
-# from tokenize import Name, Number       # Unused
+import database.data.sqlf as sqlf       # To create the database 
 
 #_______________________________________________________________________________________________________#
 
