@@ -1,1 +1,1 @@
-INSERT INTO secondary (secondary_val, primary_id) VALUES ("secondary value", 1)
+DROP TABLE Statistics

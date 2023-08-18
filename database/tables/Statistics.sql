@@ -1,5 +1,5 @@
 CREATE TABLE Statistics (
-    Stat_id     INTEGER PRIMARY KEY,
+    Stat_id     INTEGER PRIMARY KEY AUTOINCREMENT,
     Base_hp     INTEGER,
     Base_att    INTEGER,
     Base_def    INTEGER,

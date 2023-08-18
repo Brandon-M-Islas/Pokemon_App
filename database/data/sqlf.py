@@ -8,12 +8,14 @@
 ## Imports ##
 
 import sqlite3  # To use Sqlite as datatable
+import os.path  # To set a relative path for db not in dir
 
 #_______________________________________________________________________________________________________#
 
 ## Global Variables ##
 
-DB = "pokemon.db"
+DIR = os.path.dirname(__file__)
+DB = os.path.join(DIR, '..\pokemon.db')
 
 #_______________________________________________________________________________________________________#
 
