@@ -5,8 +5,10 @@
 ## venv
     Venv is a virtual environment module that is used to handle dependencies. This way no matter what's on my computer, I can activate this virtual environment (venv) and have everything work as expected. I installed with this with python3 so after activating the venv you can use pip and python as a proxy for pip3 and python3. 
     To select interpreter:               CMD + SHIFT + P -> Python: Select Interpreter -> venv option
-    To create a venv:                    `python3 -m venv <folder_name> --prompt="<terminal_name>" --upgrade-deps`
-    To activate a venv:                  `source <folder_name>/bin/activate`
+    To create a venv:                    `python3 -m venv <venv_folder_name> --prompt="<terminal_name>" --upgrade-deps`
+                                         `py -m venv <venv_folder_name> --prompt="<terminal_name>" --upgrade-deps`
+    To activate a venv:                  `source <venv_folder_name>/bin/activate`
+                                         `venv\Scripts\activate`
     To install packages into venv:       `python -m pip install <package-name>`
     To install dependencies from .txt.:  `python -m pip install -r requirements.txt`
     To list packages & versions in venv: `python -m pip list`
